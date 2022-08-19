@@ -17,15 +17,15 @@ https://go.teachbase.ru/api-docs/index.html
 
 - создание локального пользователя, личный кабинет с возможностью регистрации на teachbase
 
-![Главная страница сайта](static\img\profile.png)
+![Главная страница сайта](./static/img/profile.png)
 
 - вывод списка курсов
 
-![Главная страница сайта](static\img\courses.png)
+![Главная страница сайта](./static/img/courses.png)
 
 - детальное представление курса
 
-![Главная страница сайта](static\img\coursedetail.png)
+![Главная страница сайта](./static/img/coursedetail.png)
 
 - запись зарегистрированного пользователя на сессию
 
