@@ -115,18 +115,3 @@ def userregister(email=NULL, name="", lastname="", phone=NULL):
     if response.status_code == 200:
         return response.status_code, json.loads(response.text)[0]
     return response.status_code, response.text
-
-
-if __name__ == "__main__":
-    # print(gettoken())
-    # print(getcourses()[0].get("id"))
-    # print(getcoursedetail(courseid=getcourses()[0].get("id")))
-    # sessions = getcoursesessions(courseid=getcourses()[0].get("id"))
-    # print(sessions)
-    # print(sessions[0].get("name"))
-    # print(len(sessions))
-    user = userregister(
-        email="miniturn.decide@gmail.com", name="Vova", lastname="White"
-    )
-    print(user[0])
-    print(user[1].get("id"))

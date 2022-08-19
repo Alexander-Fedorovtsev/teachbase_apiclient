@@ -2,7 +2,6 @@ from django.db import models
 
 
 class Profile(models.Model):
-    #user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=50, verbose_name="Course name")
     created_at = models.DateTimeField(
         auto_now_add=True, verbose_name="Course created at"

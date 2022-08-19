@@ -1,10 +1,8 @@
-from email import message
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
-from django.views.generic.detail import DetailView
-from .models import Profile, User
+from .models import Profile
 from .forms import CreatonForm, UserForm, ProfileForm
-from django.shortcuts import redirect, render, get_object_or_404
+from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from . import clientapi
 
@@ -32,7 +30,6 @@ def showprofilepageview(request):
                 "users/user_profile.html",
                 {"form1": form1, "form2": form2},
             )
-            # return HttpResponseRedirect("/auth/user_profile/")
     else:
         template = "users/user_profile.html"
         accesstoken = clientapi.gettoken("/oauth/token")
@@ -61,8 +58,6 @@ def teachbaseregister(request):
         profile.save()
         message = "Вы успешно зарегистрированы на Teachbase, можете записаться на сессию!"
     context = {
-            "message": message,
-        }
+        "message": message,
+    }
     return render(request, template, context)
-    
-    
