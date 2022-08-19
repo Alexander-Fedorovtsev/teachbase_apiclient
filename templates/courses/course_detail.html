@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+<div class="card-header">
+  <h3>Подробности курса: {{ course.name }}</h3>
+</div>
+<div class="card-body">
+<img class="fit-picture" src={{ course.thumb_url }} alt="Course cover image">
+<div class="col-md-12 p-2">
+  <p>Дата создания: {{ course.created_at}}</p>
+  <p>Дата обновления: {{ course.updated_at }}</p>
+  <p>Владелец: {{ course.owner_name }}</p>
+  <p>Продолжительность: {{ course.duration }}</p>
+  <p>
+  <h6>Описание:</h6>
+  {{ course.description|safe|truncatechars:500 }}</p>
+  <p>
+  <h5>Сессий доступно - {{ sessionscount }}: </h5>
+  </p>
+  {% for session in sessions %}
+  <p> - {{ session.name }} (id {{ session.id }}) <a href="{% url 'courses:sessionregister' course.id session.id %}">записаться на эту сессию</a></p>
+  {% endfor %}
+  {% if user.id == profile.user.id %}
+  <input type="submit" value="Записаться">
+  {% endif %} 
+</div>
+{% endblock content %}

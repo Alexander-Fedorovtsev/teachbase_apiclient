@@ -1,0 +1,39 @@
+{% load static %}
+<nav class="navbar navbar-light" style="background-color: lightskyblue;">
+  <div class="container">
+    <a class="navbar-brand" href="{% url 'api:index' %}">
+      <img src="{% static 'img/909I-TAE6hI.png' %}"
+           width="50"
+           height="50"
+           class="d-inline-block align-top"
+           alt=""/>
+      <span style="color: red;">My</span>petpro
+    </a>
+    <ul class="nav nav-pills">
+      {% if request.user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'users:user_profile' %}">Профиль</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'courses:getcourses' %}">Доступные курсы</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link link-light" href="/auth/password_change">Изменить пароль</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link link-light" href="/auth/logout">Logout</a>
+        </li>
+        <li>
+          Пользователь: {{ user.username }}
+          <li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link link-light" href="/auth/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-light" href="/auth/signup">Регистрация</a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>

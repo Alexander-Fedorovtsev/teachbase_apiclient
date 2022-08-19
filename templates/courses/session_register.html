@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+<div class="card-header">
+  <h3>Детали регистрации на сессию:</h3>
+</div>
+<div class="card-body">
+<div class="col-md-12 p-2">
+  Уважаемый пользователь {{user}}<br>
+  {% if statuscode == 500 %}
+  Возникла внутренняя ошибка приложения<br>
+  Скорее всего вы не зарегистрировали пользователя на Teachbase<br>
+  Вы можете это сделать на странице Профиль<br>
+  {% elif statuscode == 200 %}
+  Вы успешно зарегистрированы на сессию<br>
+  {% elif statuscode == 403 %}
+  Похоже вы уже зарегистрированы на эту сессию<br>
+  {% else %}
+  Возникла ошибка<br>
+  Код ошибки {{statuscode}}
+  {% endif %}
+  {% if user.id == profile.user.id %}
+  <input type="submit" value="Записаться">
+  {% endif %} 
+</div>
+{% endblock content %}
