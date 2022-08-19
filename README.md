@@ -1,6 +1,6 @@
 # API клиент для доступа к некоторым endpoint ресурса teachbase  
 
-![Главная страница сайта](static\img\firstpage.png)
+![Главная страница сайта](./static/img/firstpage.png)
 
 Реализованы функции:
 
