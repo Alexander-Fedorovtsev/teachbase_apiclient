@@ -9,6 +9,5 @@ class Profile(models.Model):
     externalid = models.CharField(max_length=25, null=True, blank=True)
     accesstoken = models.CharField(max_length=50, null=True, blank=True)
 
-
-def __str__(self):
-    return str(self.user)
+    def __str__(self):
+        return str(self.user)

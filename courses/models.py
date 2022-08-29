@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Profile(models.Model):
+class CourseProfile(models.Model):
     name = models.CharField(max_length=50, verbose_name="Course name")
     created_at = models.DateTimeField(
         auto_now_add=True, verbose_name="Course created at"
@@ -29,7 +29,7 @@ class Profile(models.Model):
         auto_now=True,
         blank=True,
         null=True,
-        verbose_name="Last author’s activity",
+        verbose_name="Last author's activity",
     )
     total_score = models.IntegerField(
         verbose_name="Max score listener can get"

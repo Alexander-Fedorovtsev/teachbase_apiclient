@@ -115,3 +115,6 @@ def userregister(email=NULL, name="", lastname="", phone=NULL):
     if response.status_code == 200:
         return response.status_code, json.loads(response.text)[0]
     return response.status_code, response.text
+
+if __name__=="__main__":
+    print(getcourses()[0].get("id"))
