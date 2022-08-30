@@ -30,7 +30,7 @@ api/courses/159435 - отдает информацию о выбранном к�
 >DB_NAME=postgres\
 >POSTGRES_USER=postgres\
 >POSTGRES_PASSWORD= #пароль_к_базе_данных_на_ваш_выбор\
->DB_HOST=bd\
+>DB_HOST=db\
 >DB_PORT=5432
 
 запустите doker-compose:
