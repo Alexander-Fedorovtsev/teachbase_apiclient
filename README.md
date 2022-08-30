@@ -1,12 +1,33 @@
-# API клиент для доступа к некоторым endpoint ресурса teachbase  
+# API клиент для доступа к некоторым endpoint ресурса teachbase 
+
+## Стек технологий
+Python, Django, Django REST Framework, PostgresQL, Docker.
 
 ![Главная страница сайта](./static/img/firstpage.png)
 
-Реализованы функции:
 
-- Авторизация
-- Проверка токена
-- Отправка запросов
+
+## Установка
+
+Для локального запуска, создайте файл `.env` в директории `infra/` с содержанием:
+
+>SECRET_KEY= #любой_секретный_ключ_на_ваш_выбор
+>DEBUG=False
+>DB_ENGINE=django.db.backends.postgresql
+>DB_NAME=postgres
+>POSTGRES_USER=postgres
+>POSTGRES_PASSWORD= #пароль_к_базе_данных_на_ваш_выбор
+>DB_HOST=bd
+>DB_PORT=5432
+
+### Установка Docker
+
+Для запуска проекта вам потребуется установить `Docker` и `docker-compose`.
+
+Для установки выполните следующие команды:
+
+`sudo apt install docker docker-compose`
+Про установку на других операционных системах вы можете прочитать в документации и про установку docker-compose.
 
 ## Функционал
 
