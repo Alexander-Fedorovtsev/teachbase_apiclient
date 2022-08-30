@@ -2,7 +2,7 @@ from django.db import models
 
 
 class CourseProfile(models.Model):
-    name = models.CharField(max_length=50, verbose_name="Course name")
+    name = models.CharField(max_length=255, verbose_name="Course name")
     created_at = models.DateTimeField(
         auto_now_add=True, verbose_name="Course created at"
     )
@@ -22,8 +22,8 @@ class CourseProfile(models.Model):
     cover_url = models.CharField(
         max_length=255, null=True, blank=True, verbose_name="Course cover url"
     )
-    description = models.CharField(null=True,
-        max_length=255, verbose_name="Course description"
+    description = models.CharField(null=True, blank=True,
+        max_length=1000, verbose_name="Course description"
     )
     last_activity = models.DateTimeField(
         auto_now=True,

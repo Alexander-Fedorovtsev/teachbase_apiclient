@@ -33,4 +33,9 @@ urlpatterns = [
         ),
         name="redoc",
     ),
+    path(
+        "updatedb/",
+        views.storecoursesindb,
+        name="updatebd",
+    ),
 ]

@@ -1,3 +1,4 @@
+from re import template
 from courses.models import CourseProfile
 from .serializers import CourseSerializer
 from rest_framework.generics import ListAPIView
@@ -37,10 +38,22 @@ class CourseDetail(viewsets.ModelViewSet):
 
 def storecoursesindb(request):
     courses = getcourses(per_page=50)
+    template = "api/updatebd.html"
+    countreaded = 0
+    countstored = 0
     for course in courses:
+        countreaded += 1
+
         if not CourseProfile.objects.filter(id=course.get("id")):
             serializer = CourseSerializer(data=course)
             if serializer.is_valid():
+                countstored += 1
                 serializer.save(id=course.get("id"))
-    context = {}
+            else:
+                error = serializer.errors
+    context = {
+        "countstored": countstored,
+        "countreaded": countreaded,
+        "error": error,
+    }
     return render(request, template, context)

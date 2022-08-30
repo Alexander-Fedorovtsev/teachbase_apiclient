@@ -7,6 +7,7 @@ from django.http import HttpResponseRedirect
 from . import clientapi
 
 
+
 class SignUp(CreateView):
     form_class = CreatonForm
     success_url = reverse_lazy("index")
