@@ -3,6 +3,19 @@
 ## Стек технологий
 Python, Django, Django REST Framework, PostgresQL, Docker.
 
+## API (DRF)
+
+api/courses - отдает сохраненные в базе курсы в виде списка
+поддерживается пагинация
+
+![api/courses](./static/img/api_courses.png)
+
+api/courses/159435 - отдает информацию о выбранном курсе
+
+![api/courses/id](./static/img/api_coursedetail.png)
+
+Главная страница сайта:
+
 ![Главная страница сайта](./static/img/firstpage.png)
 
 
@@ -11,15 +24,17 @@ Python, Django, Django REST Framework, PostgresQL, Docker.
 
 Для локального запуска, создайте файл `.env` в директории `infra/` с содержанием:
 
->SECRET_KEY= #любой_секретный_ключ_на_ваш_выбор
->DEBUG=False
->DB_ENGINE=django.db.backends.postgresql
->DB_NAME=postgres
->POSTGRES_USER=postgres
->POSTGRES_PASSWORD= #пароль_к_базе_данных_на_ваш_выбор
->DB_HOST=bd
+>SECRET_KEY= #любой_секретный_ключ_на_ваш_выбор\
+>DEBUG=False\
+>DB_ENGINE=django.db.backends.postgresql\
+>DB_NAME=postgres\
+>POSTGRES_USER=postgres\
+>POSTGRES_PASSWORD= #пароль_к_базе_данных_на_ваш_выбор\
+>DB_HOST=bd\
 >DB_PORT=5432
 
+запустите doker-compose:
+>docker-compose --project-directory ./infra up -d --build
 ### Установка Docker
 
 Для запуска проекта вам потребуется установить `Docker` и `docker-compose`.
