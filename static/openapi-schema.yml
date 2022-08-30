@@ -1,0 +1,129 @@
+openapi: 3.0.2
+info:
+  title: Your Project
+  version: 1.0.0
+  description: "API for all things \u2026"
+paths:
+  /api/courses/:
+    get:
+      operationId: listCourseProfiles
+      description: ''
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: per_page
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 123
+                  next:
+                    type: string
+                    nullable: true
+                    format: uri
+                    example: http://api.example.org/accounts/?page=4
+                  previous:
+                    type: string
+                    nullable: true
+                    format: uri
+                    example: http://api.example.org/accounts/?page=2
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Course'
+          description: ''
+      tags:
+      - api
+  /api/courses/{courseid}/:
+    get:
+      operationId: retrieveCourse
+      description: ''
+      parameters:
+      - name: courseid
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Course'
+          description: ''
+      tags:
+      - api
+components:
+  schemas:
+    Course:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 50
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        owner_id:
+          type: integer
+          nullable: true
+        owner_name:
+          type: string
+          nullable: true
+          maxLength: 50
+        thumb_url:
+          type: string
+          nullable: true
+          maxLength: 255
+        cover_url:
+          type: string
+          nullable: true
+          maxLength: 255
+        description:
+          type: string
+          nullable: true
+          maxLength: 255
+        last_activity:
+          type: string
+          format: date-time
+          readOnly: true
+        total_score:
+          type: integer
+        total_tasks:
+          type: integer
+        unchangeable:
+          type: boolean
+        include_weekly_report:
+          type: boolean
+        content_type:
+          type: integer
+      required:
+      - name
+      - total_score
+      - total_tasks
+      - unchangeable
+      - include_weekly_report
+      - content_type

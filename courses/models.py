@@ -22,7 +22,7 @@ class CourseProfile(models.Model):
     cover_url = models.CharField(
         max_length=255, null=True, blank=True, verbose_name="Course cover url"
     )
-    description = models.CharField(
+    description = models.CharField(null=True,
         max_length=255, verbose_name="Course description"
     )
     last_activity = models.DateTimeField(

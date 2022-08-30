@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 import requests
 import json
 from random import randint
@@ -65,7 +64,7 @@ def getcoursesessions(
     return response.status_code
 
 
-def sessionregister(sessionid="", email=NULL, phone=NULL, user_id=""):
+def sessionregister(sessionid="", email=None, phone=None, user_id=""):
     PARAMS = {
         "access_token": gettoken(),
     }
@@ -81,7 +80,7 @@ def sessionregister(sessionid="", email=NULL, phone=NULL, user_id=""):
     return response.status_code, json.loads(response.text)
 
 
-def userregister(email=NULL, name="", lastname="", phone=NULL):
+def userregister(email=None, name="", lastname="", phone=None):
     PARAMS = {
         "access_token": gettoken(),
     }

@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13.0-alpine
+    volumes:
+      - /var/lib/postgresql/data/
+    env_file:
+      - ./.env
+  web:
+    build: ../
+    restart: always
+    command: >
+      sh -c "python manage.py collectstatic --noinput &&
+             python manage.py makemigrations &&
+             python manage.py migrate &&
+             python manage.py createsuperuser --noinput --email admin@admin.ru --username admin &&
+             gunicorn drf_test_task.wsgi:application --bind 0:80 --timeout 240 --workers=3 --threads=3"
+    volumes:
+      - static_volume:/app/static/
+      - static_volume:/app/media/
+    depends_on:
+      - db
+    env_file:
+      - ./.env
+  nginx:
+    image: nginx:1.21.3-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - static_volume:/var/html/static/
+      - media_volume:/var/html/media/
+    depends_on:
+      - web
+
+volumes:
+  media_volume:
+  static_volume:

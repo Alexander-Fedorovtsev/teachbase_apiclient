@@ -9,7 +9,7 @@ from . import clientapi
 
 class SignUp(CreateView):
     form_class = CreatonForm
-    success_url = reverse_lazy("api:index")
+    success_url = reverse_lazy("index")
     template_name = "users/signup.html"
 
 

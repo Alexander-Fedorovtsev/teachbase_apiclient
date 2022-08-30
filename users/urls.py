@@ -6,6 +6,7 @@ from django.contrib.auth.views import (
     PasswordResetView,
 )
 from . import views
+from django.urls import reverse_lazy
 
 
 app_name = "users"
@@ -27,7 +28,7 @@ urlpatterns = [
     ),
     path(
         "password_change/",
-        PasswordChangeView.as_view(template_name="users/passchange.html"),
+        PasswordChangeView.as_view(success_url=reverse_lazy('index'),template_name="users/passchange.html"),
     ),
     path("tbregister/", views.teachbaseregister, name="tbregister"),
     path("user_profile/", views.showprofilepageview, name="user_profile"),
