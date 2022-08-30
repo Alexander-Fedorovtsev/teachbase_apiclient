@@ -1,7 +1,7 @@
 # API клиент для доступа к некоторым endpoint ресурса teachbase 
 
 ## Стек технологий
-Python, Django, Django REST Framework, PostgresQL, Docker.
+Python, Django, Django REST Framework, PostgreSQL, Docker.
 
 ## API (DRF)
 
