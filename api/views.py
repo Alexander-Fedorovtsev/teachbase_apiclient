@@ -1,10 +1,11 @@
-from .dbstore import storecoursesindb
 from courses.models import CourseProfile
 from .serializers import CourseSerializer
 from rest_framework.generics import ListAPIView
 from .pagination import CoursesPagination
 from rest_framework import viewsets
 from django.shortcuts import get_object_or_404
+from users.clientapi import getcourses
+from django.shortcuts import render
 
 
 class GetCourses(ListAPIView):
@@ -15,7 +16,6 @@ class GetCourses(ListAPIView):
 
     """
 
-    storecoursesindb(num=50)
     queryset = CourseProfile.objects.all()
     serializer_class = CourseSerializer
     pagination_class = CoursesPagination
@@ -33,3 +33,14 @@ class CourseDetail(viewsets.ModelViewSet):
 
     def get_object(self):
         return get_object_or_404(CourseProfile, id=self.kwargs["courseid"])
+
+
+def storecoursesindb(request):
+    courses = getcourses(per_page=50)
+    for course in courses:
+        if not CourseProfile.objects.filter(id=course.get("id")):
+            serializer = CourseSerializer(data=course)
+            if serializer.is_valid():
+                serializer.save(id=course.get("id"))
+    context = {}
+    return render(request, template, context)

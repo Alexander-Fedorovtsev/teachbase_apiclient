@@ -13,7 +13,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 DEBUG = os.getenv("DEBUG", default=True)
 
-ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'localhost',]
+ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'localhost', "web"]
 
 LOGIN_REDIRECT_URL = "/"
 
